@@ -1,10 +1,23 @@
 #!/bin/bash
-#********************************************************* 
-# This script configures a base Kali Linux system        *
-# With the "ProcessPCAPs"  PCAP file analysis framework  *
-# by Kenneth G. Hartman                                  *
-# www.KennethGHartman.com                                *
-# ********************************************************
+
+# This scripts assumes a fresh install onto a Debian virtual machine from 
+# http://cdimage.kali.org/kali-2.0/kali-linux-mini-2.0-amd64.iso
+
+#Test to ensure expected OS Distribution and Version
+OSTEST=$(grep "Kali GNU/Linux 2.0 (sana)" /etc/*release | wc -c)
+if [ $OSTEST == 0 ]
+then
+echo "Incorrect Operating System - Kali Linux 2.0 Expected"
+exit 1
+fi
+
+#Test to ensure script is run as root
+USERTEST=$(whoami)
+if [ $USERTEST != "root" ]
+then
+echo "Incorrect Permissions - Run this script as root"
+#exit 1
+fi
 
 # Install required packages
 apt-get -y install chkconfig
@@ -27,17 +40,6 @@ usermod -a -G sudo manager
 # Don't forget to change the default password!!
 useradd -m upload
 echo 'upload:upload33' | chpasswd
-
-# Prevent root login via ssh
-###sed 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config > /etc/ssh/sshd_config_new
-###mv /etc/ssh/sshd_config_new /etc/ssh/sshd_config
-if [ $(grep 'PermitRootLogin no' /etc/ssh/sshd_config | wc -m ) -eq 0 ]; then 
-	echo '***************************************'
-	echo 'WARNING Root may still have SSH Access'
-###	echo 'install script has been aborted'
-	echo '***************************************'
-###	exit
-fi
 
 # Change SSH keys
 update-rc.d -f ssh remove
