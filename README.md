@@ -2,4 +2,4 @@
 
 
 ## Installation
-Follow the instructions [here](INDTALL.md)
+Follow the instructions [here](INSTALL.md)

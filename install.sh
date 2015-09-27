@@ -71,20 +71,19 @@ echo ' ' >> /etc/motd
 service ssh restart
 
 # Create the directories for PCAP processing
-mkdir /root/pcap_files/
-mkdir /root/pcap_files/in/
-mkdir /root/pcap_files/processed/
-mkdir /root/processpcaps/
-mkdir /root/snort_configs
-mkdir /root/generated_scripts/
-mkdir /root/snort_logs/
-mkdir /root/artifacts/
-mkdir /root/output/
-ls -d
+mkdir /usr/local/procpcap/pcap_files/
+mkdir /usr/local/procpcap/pcap_files/in/
+mkdir /usr/local/procpcap/pcap_files/processed/
+mkdir /usr/local/procpcap/processpcaps/
+mkdir /usr/local/procpcap/snort_configs
+mkdir /usr/local/procpcap/generated_scripts/
+mkdir /usr/local/procpcap/snort_logs/
+mkdir /usr/local/procpcap/artifacts/
+mkdir /usr/local/procpcap/output/
 
 # Create a script to check for uploaded *.PCAP files.  This script will run every minute and
 # if it finds a packet capture will more it to the "in" directory to be processed 
-echo 'stat -t /home/upload/*.pcap >/dev/null 2>&1 && mv /home/upload/*.pcap /root/pcap_files/in' > /root/check4upload.sh
-chmod 550 /root/check4upload.sh
-echo '0/1 0 0 0 0 root /root/check4upload.sh' >> /etc/crontab
+echo 'stat -t /home/upload/*.pcap >/dev/null 2>&1 && mv /home/upload/*.pcap /usr/local/procpcap/pcap_files/in' > /usr/local/procpcap/check4upload.sh
+chmod 550 /usr/local/procpcap/check4upload.sh
+echo '0/1 0 0 0 0 root /usr/local/procpcap/check4upload.sh' >> /etc/crontab
 
