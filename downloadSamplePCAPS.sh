@@ -16,9 +16,9 @@ wget -b -a log.txt http://panda.gtisc.gatech.edu/malrec/pcap/4ec30df6-ee8f-4cd7-
 wget -b -a log.txt http://holisticinfosec.org/toolsmith/files/nov2k6/toolsmith.pcap
 wget -b -a log.txt http://barracudalabs.com/downloads/5f810408ddbbd6d349b4be4766f41a37.pcap
 
-DLTEST=$(ps aux | grep "wget.*pcapx$" | wc -c)
+DLTEST=$(ps aux | grep "wget.*pcap$" | wc -c)
 while [ "$DLTEST" -gt 0 ]
 do
-DLTEST=$(ps aux | grep "wget.*pcap$" | wc -c)
+    DLTEST=$(ps aux | grep "wget.*pcap$" | wc -c)
 done
 wall -n "Downloads Complete"
