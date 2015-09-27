@@ -20,13 +20,9 @@ echo "Incorrect Permissions - Run this script as root"
 fi
 
 # Install required packages
-apt-get -y install chkconfig
-apt-get -y install openssh-server
-apt-get -y install tshark
-apt-get -y install tcpflow
-apt-get -y install snort
-apt-get -y install p0f
-apt-get -y install dsniff
+apt-get upgrade
+DEBIAN_FRONTEND=noninteractive apt-get -y install tshark tcpflow p0f dsniff snort
+apt-get -y install chkconfig git
 
 # Add the user "manager" and password "manager99"
 # Give the manager account sudo priv
@@ -71,6 +67,7 @@ echo ' ' >> /etc/motd
 service ssh restart
 
 # Pull down the ProcessPCAPs code
+
 cd /usr/local/
 git clone https://github.com/Resistor52/processpcaps.git
 
