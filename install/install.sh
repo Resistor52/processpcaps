@@ -78,7 +78,7 @@ chmod 550 /usr/local/processpcaps/downloadSamplePCAPS.sh
 mkdir /usr/local/processpcaps/pcap_files/
 mkdir /usr/local/processpcaps/pcap_files/in/
 mkdir /usr/local/processpcaps/pcap_files/processed/
-mkdir /usr/local/processpcaps/snort_configs
+mkdir /usr/local/processpcaps/snort_configs/
 mkdir /usr/local/processpcaps/generated_scripts/
 mkdir /usr/local/processpcaps/snort_logs/
 mkdir /usr/local/processpcaps/artifacts/

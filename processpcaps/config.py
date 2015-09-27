@@ -10,17 +10,17 @@
 # ======================================================================
 
 # General parameters
-generated_scripts = "/root/generated_scripts/"
-artifacts = "/root/artifacts/"
+generated_scripts = "/usr/local/processpcaps/generated_scripts/"
+artifacts = "/usr/local/processpcaps/artifacts/"
 mainlog = "processpcaps.log"
 scriptout =  "processpcap.sh"
 hashfile_suffix = "_hash"
 outputlogsuffix = ".log"
-output = "/root/output/"
+output = "/usr/local/processpcaps/output/"
 
 # snort parameters
-snort_configs = "/root/snort_configs/"
-snort_configs = "/etc/snort/"
+snort_configs = "/usr/local/processpcaps/snort_configs/"
+#snort_configs = "/etc/snort/"
 snort_logs = "/root/snort_logs/"  #TODO Replace with output
 snortconfig = "snort.conf"
 alertfile = "alert"
