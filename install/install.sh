@@ -20,6 +20,7 @@ echo "Incorrect Permissions - Run this script as root"
 fi
 
 # Install required packages
+apt-get update
 apt-get upgrade
 DEBIAN_FRONTEND=noninteractive apt-get -y install tshark 
 apt-get -y install tcpflow p0f dsniff snort chkconfig git
