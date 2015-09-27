@@ -26,4 +26,13 @@ The script downloads 8 files simultaneously in the background, but it is suggest
 
 When all of the sample files have been downloaded, you will get a "Downloads Complete" Message on the terminal. (You may need to hit another carriage return to get back to the prompt.)
 
+If you are curious, you can see how many files are still downloading using:
+```
+ps aux | grep "wget.*pcap$"
+```
+You can see how much of a file has downloaded using:
+```
+tail -n 2  /home/upload/log.txt | grep "%"
+```  
+
 **Step 6** - To see ProcessPCAPs in action...
