@@ -17,7 +17,7 @@ wget -b -a log.txt http://holisticinfosec.org/toolsmith/files/nov2k6/toolsmith.p
 wget -b -a log.txt http://barracudalabs.com/downloads/5f810408ddbbd6d349b4be4766f41a37.pcap
 
 DLTEST=$(ps aux | grep "wget.*pcapx$" | wc -c)
-while [ $DLTEST -gt 0 ]
+while [ "$DLTEST" -gt 0 ]
 do
 DLTEST=$(ps aux | grep "wget.*pcap$" | wc -c)
 done
