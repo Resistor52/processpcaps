@@ -21,8 +21,8 @@ fi
 
 # Install required packages
 apt-get upgrade
-DEBIAN_FRONTEND=noninteractive apt-get -y install tshark tcpflow p0f dsniff snort
-apt-get -y install chkconfig git
+DEBIAN_FRONTEND=noninteractive apt-get -y install tshark 
+apt-get -y install tcpflow p0f dsniff snort chkconfig git
 
 # Add the user "manager" and password "manager99"
 # Give the manager account sudo priv
