@@ -70,6 +70,9 @@ service ssh restart
 
 cd /usr/local/
 git clone https://github.com/Resistor52/processpcaps.git
+chmod 550 /usr/local/processpcaps/check4upload.sh
+chmod 550 /usr/local/processpcaps/downloadSamplePCAPS.sh
+
 
 # Create the directories for PCAP processing
 mkdir /usr/local/processpcaps/pcap_files/
@@ -81,9 +84,7 @@ mkdir /usr/local/processpcaps/snort_logs/
 mkdir /usr/local/processpcaps/artifacts/
 mkdir /usr/local/processpcaps/output/
 
-# Create a script to check for uploaded *.PCAP files.  This script will run every minute and
-# if it finds a packet capture will more it to the "in" directory to be processed 
-echo 'stat -t /home/upload/*.pcap >/dev/null 2>&1 && mv /home/upload/*.pcap /usr/local/processpcaps/pcap_files/in' > /usr/local/processpcaps/check4upload.sh
-chmod 550 /usr/local/processpcaps/check4upload.sh
+# Schedule the script to check for uploaded *.PCAP files.  This script will run every minute and
+# if it finds a packet capture will move it to the "in" directory to be processed 
 echo '0/1 0 0 0 0 root /usr/local/processpcaps/check4upload.sh' >> /etc/crontab
 
