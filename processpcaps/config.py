@@ -20,7 +20,6 @@ output = "/usr/local/processpcaps/output/"
 
 # snort parameters
 snort_configs = "/usr/local/processpcaps/snort_configs/"
-#snort_configs = "/etc/snort/"
 snort_logs = "/root/snort_logs/"  #TODO Replace with output
 snortconfig = "snort.conf"
 alertfile = "alert"

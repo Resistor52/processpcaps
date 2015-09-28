@@ -23,7 +23,54 @@ fi
 apt-get update
 apt-get upgrade
 DEBIAN_FRONTEND=noninteractive apt-get -y install tshark 
-apt-get -y install tcpflow p0f dsniff snort chkconfig git
+apt-get -y install tcpflow p0f dsniff chkconfig git vim
+apt-get -y install flex bison gcc g++ libnet1 libnet1-dev libpcre3 libpcre3-dev 
+
+#Install Snort Pre-Requisites
+## Install libpcap
+cd /usr/src
+wget http://www.tcpdump.org/release/libpcap-1.6.1.tar.gz
+tar -zxf libpcap-1.6.1.tar.gz 
+cd libpcap-1.6.1
+./configure --prefix=/usr
+make; make install
+
+## Install libdnet
+cd /usr/src
+wget http://libdnet.googlecode.com/files/libdnet-1.12.tgz
+tar -zxf libdnet-1.12.tgz
+cd libdnet-1.12
+./configure --prefix=/usr --enable-shared
+make; make install
+
+## Install daq:
+cd /usr/src
+wget https://snort.org/downloads/snort/daq-2.0.6.tar.gz
+tar xvfz daq-2.0.6.tar.gz
+cd daq-2.0.6
+./configure
+make; make install
+
+## Install zlib
+cd /usr/src
+wget http://zlib.net/zlib-1.2.8.tar.gz
+tar xvfz zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure
+make; make install
+
+## Update Shared Library Path
+echo >> /etc/ld.so.conf /usr/lib
+echo >> /etc/ld.so.conf /usr/local/lib
+ldconfig
+
+# Install Snort
+/usr/src
+wget wget https://snort.org/downloads/snort/snort-2.9.7.5.tar.gz
+tar xvfz snort-2.9.7.5.tar.gz
+cd snort-2.9.7.5
+./configure --enable-sourcefire
+make; make install
 
 # Add the user "manager" and password "manager99"
 # Give the manager account sudo priv
